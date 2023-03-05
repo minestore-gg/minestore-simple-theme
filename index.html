@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Hypixel - Store</title>
+
+    <link rel="stylesheet" href="theme.css" />
+  </head>
+  <body class="text-white bg-black-800">
+    <!-- Active Breakpoint Indicator -->
+    <div
+      class="z-[100000] fixed top-0 left-1/2 -translate-x-1/2 p-3 text-xs font-mono text-white h-6 w-6 rounded-b-full flex items-center justify-center bg-gray-700 sm:bg-pink-500 md:bg-orange-500 lg:bg-green-500 xl:bg-blue-500"
+    >
+      <div class="block sm:hidden md:hidden lg:hidden xl:hidden">al</div>
+      <div class="hidden sm:block md:hidden lg:hidden xl:hidden">sm</div>
+      <div class="hidden sm:hidden md:block lg:hidden xl:hidden">md</div>
+      <div class="hidden sm:hidden md:hidden lg:block xl:hidden">lg</div>
+      <div class="hidden sm:hidden md:hidden lg:hidden xl:block">xl</div>
+    </div>
+    <!-- /Active Breakpoint Indicator -->
+
+    <!-- Darkened overlay -->
+    <div class="custom-background"></div>
+    <!-- /Darkened overlay -->
+
+    <!-- Header -->
+    <header class="py-6 bg-black-900 bg-opacity-25">
+      <div class="flex items-center justify-between container">
+        <h1 class="text-2xl font-extrabold">Hypixel</h1>
+
+        <div class="text-right">
+          <span
+            >JOIN
+            <span class="font-extrabold" id="minestore-player-count">0</span>
+            PLAYERS ONLINE</span
+          >
+          <h2 class="font-extrabold text-xl cursor-pointer select-none">
+            mc.hypixel.net
+          </h2>
+        </div>
+      </div>
+    </header>
+    <!-- /Header -->
+
+    <!-- Content -->
+    <main class="mt-8 container flex gap-x-5">
+      <nav class="w-1/4">
+        <div
+          class="bg-black-600 flex items-center gap-x-5 px-6 py-3 rounded-lg shadow-md"
+        >
+          <img
+            class="h-10 w-10 rounded-lg"
+            src="https://crafatar.com/avatars/50593ef1dee549778e0c34ac14d05284"
+            alt="Minecraft avatar of Maiky1304"
+          />
+          <div>
+            <p class="text-xs uppercase text-gray-600 font-bold">
+              Logged in as
+            </p>
+            <p class="font-bold text-lg">Maiky1304</p>
+          </div>
+        </div>
+
+        <ul class="mt-8 space-y-3">
+          <div
+            class="bg-black-600 flex items-center gap-x-5 px-6 py-3 rounded-lg shadow-md shadow-blue-500/30"
+          >
+            <a href="#" class="font-bold">Home</a>
+          </div>
+          <div
+            class="bg-black-600 flex items-center gap-x-5 px-6 py-3 rounded-lg shadow-md"
+          >
+            <a href="#" class="font-bold">Ranks</a>
+          </div>
+          <div
+            class="bg-black-600 flex items-center gap-x-5 px-6 py-3 rounded-lg shadow-md"
+          >
+            <a href="#" class="font-bold">Other</a>
+          </div>
+        </ul>
+      </nav>
+
+      <div class="w-full">
+        <article
+          class="bg-black-600 flex items-center gap-x-5 px-6 py-3 rounded-lg shadow-md"
+        >
+          <p>This is some cool description about the store!</p>
+        </article>
+      </div>
+    </main>
+
+    <!-- Scripts -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"
+      integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+      crossorigin="anonymous"
+    ></script>
+    <script defer>
+      $(function () {
+        var host = "play.hypixel.net";
+        var port = 25565;
+        window.checkServerStatus = setInterval(function () {
+          $.ajax({
+            url: `https://api.minetools.eu/ping/${host}/${port}`,
+            success: function (data) {
+              console.log("success", data);
+              $("#minestore-player-count").text(data?.players?.online);
+            },
+          });
+        }, 1500);
+      });
+    </script>
+    <!-- /Scripts -->
+  </body>
+</html>
